@@ -12,7 +12,14 @@ public class WhileLoopsRecap {
 //			count++;
 //		}
 //		magicNumber();
-		subtraction();
+//		subtraction();
+//		getGcd(12,4);
+//		System.out.printf("%s %d", "THE GCD OF 12 AND 4 IS",getGcd(12,4));
+//		Scanner scan= new Scanner(System.in);
+//		System.out.println("ENTER A WORD TO TEST IF IT IS A PALLINDROME");
+//		String a=scan.nextLine();
+//		System.out.printf("%s %b ","IS "+a+" A PALLINDROME ?\n",isPallindrome(a));
+		showPrimes(1000);
 	}
 	
 //	THE WHILE LOOP.
@@ -96,6 +103,51 @@ public class WhileLoopsRecap {
 		long endTime=System.currentTimeMillis();
 		String statement="YOU GOT:\n "+countRight+" RIGHT\n "+countWrong+" WRONG\nTEST TIME = "+(endTime-startTime)/100+" Secs";
 		System.out.println(statement);
+	}
+	public static int getGcd(int a, int b) {
+		int gcd=1;
+		int k=2;
+		do {
+			if(a%k==0&&b%k==0) {
+				gcd=k;
+			}
+			k++;
+		}while(k<=a&&k<=b);
+		return gcd;
+	}
+	
+	public static boolean isPallindrome(String s) {
+		int n=s.length();
+		String t="";
+		for(int i=n-1;i>=0;i--) {
+			t+=s.charAt(i);
+		}
+		return s.equals(t);
+	}
+	
+	public static void showPrimes(int number) {
+		int a=2;
+		int count=0;
+		while(count<=number) {
+				if(isPrime(a)){
+					count++;
+					if(count%10==0) {
+						System.out.println();
+					}	
+					System.out.print(a+" ");
+				}
+				a++;
+				}
+	
+	}
+	
+	public static boolean isPrime(int a) {
+		for(int i=2;i<=a/2;i++) {
+			if(a%i==0) {
+				return false;
+			}
+		}
+		return true;
 	}
 	
 
