@@ -19,31 +19,32 @@ public class LoopQZ {
 //	plication questions for two integers between 1 and 12. Display the correct count
 //	and test time.
 	public static void multiQz() {
-		Scanner scan = new Scanner(System.in);
-		int count = 0;
-		int rightcount = 0;
-		int wrongcount = 0;
-		long startTime = System.currentTimeMillis();
+		try (Scanner scan = new Scanner(System.in)) {
+			int count = 0;
+			int rightcount = 0;
+			int wrongcount = 0;
+			long startTime = System.currentTimeMillis();
 
-		while (count < 5) {
-			int a = (int) (Math.random() * 13);
-			int b = (int) (Math.random() * 13);
+			while (count < 5) {
+				int a = (int) (Math.random() * 13);
+				int b = (int) (Math.random() * 13);
 
-			System.out.println("What is " + a + " x " + b + " ?");
-			int answer = scan.nextInt();
-			if (answer == (a * b)) {
-				rightcount++;
-				System.out.println("BRAVO!");
-			} else {
-				wrongcount++;
-				System.out.println("OOPS! THE ANSWER IS " + (a * b));
+				System.out.println("What is " + a + " x " + b + " ?");
+				int answer = scan.nextInt();
+				if (answer == (a * b)) {
+					rightcount++;
+					System.out.println("BRAVO!");
+				} else {
+					wrongcount++;
+					System.out.println("OOPS! THE ANSWER IS " + (a * b));
+				}
+				count++;
 			}
-			count++;
-		}
 
-		long endTime = System.currentTimeMillis();
-		System.out.println("\nYOU HAVE GOT " + rightcount + " RIGHT\nAND " + wrongcount + " WRONG\n"
-				+ "TOTAL TIME TAKEN " + (endTime - startTime) / 100 + " SECS");
+			long endTime = System.currentTimeMillis();
+			System.out.println("\nYOU HAVE GOT " + rightcount + " RIGHT\nAND " + wrongcount + " WRONG\n"
+					+ "TOTAL TIME TAKEN " + (endTime - startTime) / 100 + " SECS");
+		}
 	}
 // (Conversion from C° to F°) Write a program that displays the following table
 // (note that Fahrenheit = Celsius * 9/5 + 32):
@@ -178,27 +179,28 @@ public class LoopQZ {
 //number of students is at least 1.
 //(Find the two lowest scores)
 	public static void findHighScore() {
-		Scanner scan = new Scanner(System.in);
-		System.out.println("ENTER THE NUMBER OF STUDENTS:");
-		int students = scan.nextInt();
-		String[] names = new String[students];
-		int[] scores = new int[students];
+		try (Scanner scan = new Scanner(System.in)) {
+			System.out.println("ENTER THE NUMBER OF STUDENTS:");
+			int students = scan.nextInt();
+			String[] names = new String[students];
+			int[] scores = new int[students];
 
-		int lowestScore = 0;
-		int lowestScoreIndex = 0;
-		int highScore = 0;
-		int highScoreIndex = 0;
+			int lowestScore = 0;
+			int lowestScoreIndex = 0;
+			int highScore = 0;
+			int highScoreIndex = 0;
 
-		for (int i = 0; i < students; i++) {
-			System.out.println("ENTER THE NAME OF THE STUDENT THEN THE STUDENTS SCORE");
-			names[i] = scan.next();
-			scores[i] = scan.nextInt();
+			for (int i = 0; i < students; i++) {
+				System.out.println("ENTER THE NAME OF THE STUDENT THEN THE STUDENTS SCORE");
+				names[i] = scan.next();
+				scores[i] = scan.nextInt();
+			}
+
+			System.out.printf("%s %d\n", "" + names[highScore(scores)[1]] + " HAD THE HIGHEST SCORE OF ",
+					highScore(scores)[0]);
+			System.out.printf("%s %d\n", "" + names[lowScore(scores)[1]] + " HAD THE LOWEST SCORE OF ",
+					lowScore(scores)[0]);
 		}
-
-		System.out.printf("%s %d\n", "" + names[highScore(scores)[1]] + " HAD THE HIGHEST SCORE OF ",
-				highScore(scores)[0]);
-		System.out.printf("%s %d\n", "" + names[lowScore(scores)[1]] + " HAD THE LOWEST SCORE OF ",
-				lowScore(scores)[0]);
 	}
 
 // used in method above;

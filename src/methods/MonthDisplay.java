@@ -7,8 +7,8 @@ public class MonthDisplay {
 	public static void main(String[] args) {
 //		System.out.println(getStartDay(11, 2024));
 //		printMonthBody(11, 2024);
-		printCalender();
-//		yearCalender();
+//		printCalender();
+		yearCalender();
 	}
 
 	public static boolean isLeap(int year) {
@@ -76,7 +76,7 @@ public class MonthDisplay {
 		if (startday == 0) {
 			startday = 7;
 		}
-		for (int j = 0; j < startday; j++) {
+		for (int j = 1; j < startday; j++) {
 			System.out.printf("%4s ", " ");
 		}
 		for (int i = 1; i <= daysInMonth; i++) {
